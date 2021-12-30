@@ -20,8 +20,6 @@ const query = async () => {
     const response = await fetch(url, { method: 'GET' })
     const { counter } = await response.json()
 
-    console.log(counter)
-
     for (var i = 0; i < counter; i++) {
         console.log(`performing request ${i}`)
         const response = await fetch(url, { method: 'GET' })
