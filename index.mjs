@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import fetch from "node-fetch"
 
 // decimals 18
 // 12 robbies per request
@@ -29,15 +29,15 @@ const query = async () => {
     var robbies = []
     var promises = []
 
-    const getCounterRequest = await request(0)
-    const counter = getCounterRequest.counter
+    const data = await request(0)
+    const counter = data.counter
 
     const start = new Date().getTime()
     for (var page = 0; page < counter; page++) promises.push(request(page))
-    const result = await Promise.all(promises);
+    const result = await Promise.all(promises)
     robbies = result.map(r => r.data)
-    robbies = [].concat.apply([], robbies);
-    const end = new Date().getTime();
+    robbies = [].concat.apply([], robbies)
+    const end = new Date().getTime()
 
     console.log(`Total robbies fetched: ${robbies.length}`)
     console.log(`Call to [query] took ${end - start} milliseconds`)
