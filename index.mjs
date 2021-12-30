@@ -30,7 +30,6 @@ const query = async () => {
     }
 
     console.log(`Total robbies fetched: ${robbies.length}`)
-    const robbiesCheck = robbies.map(r => r.)
 
 }
 
