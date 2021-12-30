@@ -40,15 +40,12 @@ const query = async () => {
     robbies = [].concat.apply([], robbies);
     const end = new Date().getTime();
 
-    // console.log(robbies)
     console.log(`Total robbies fetched: ${robbies.length}`)
     console.log(`Call to [query] took ${end - start} milliseconds`)
 
 }
 
 query()
-// generateUrls(100)
-
 
 // robbie json example
 
