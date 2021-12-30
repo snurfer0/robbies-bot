@@ -1,11 +1,11 @@
 import fetch from "node-fetch";
 
+// decimals 18
 // 12 robbies per request
 // counter is the total number of pages
 // 100+ async requests needed to get all robbies
-// robbies NFT Contract 0xd4220b0b196824c2f548a34c47d81737b0f6b5d6
-// decimals 18
 // remove last 18 chars from string str.slice(0, -18)
+// robbies NFT Contract 0xd4220b0b196824c2f548a34c47d81737b0f6b5d6
 
 const BASE_URL = 'https://marketplace.biswap.org/back/offers/main-page'
 const DEFAULT_PARTNER = '6184f5111329baa2cd24ec38'
@@ -29,9 +29,8 @@ const query = async () => {
     var robbies = []
     var promises = []
 
-    const TEMP_URL = getUrl(DEFAULT_SORT, USER_ADDRESS, 0, DEFAULT_PARTNER, DEFAULT_FILTER)
-    const response = await fetch(TEMP_URL, { method: 'GET' })
-    const { counter } = await response.json()
+    const getCounterRequest = await request(0)
+    const counter = getCounterRequest.counter
 
     const start = new Date().getTime()
     for (var page = 0; page < counter; page++) promises.push(request(page))
@@ -48,7 +47,6 @@ const query = async () => {
 query()
 
 // robbie json example
-
 // {
 //       _id: '61ccfdd74afc95c20c5e4543',
 //       price: '92000000000000000000',
